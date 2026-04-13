@@ -8,9 +8,12 @@
 
 // Функция для безопасного ввода целого числа
 long long get_integer(const char *prompt)
+
 {
     char buffer[BUFFER_SIZE];
+
     long long result;
+
     char *endptr;
 
     while (1)
@@ -41,6 +44,7 @@ long long get_integer(const char *prompt)
         result = strtol(buffer, &endptr, 10);
 
         // Проверяем, что вся строка была успешно преобразована
+
         if (*endptr != '\0')
         {
             printf("Некорректный ввод: '%s' не является целым числом. Попробуйте ещё раз.\n",
@@ -49,6 +53,7 @@ long long get_integer(const char *prompt)
         }
 
         // Проверяем на переполнение/недополнение
+
         if (errno == ERANGE)
         {
             printf("Число вне диапазона int. Попробуйте ещё раз.\n");
@@ -79,6 +84,7 @@ char get_operation(void)
         printf("Введите операцию (+, -, *, /): ");
         if (fgets(buffer, sizeof(buffer), stdin) == NULL)
         {
+
             printf("Ошибка ввода. Попробуйте ещё раз.\n");
             continue;
         }
@@ -105,6 +111,7 @@ char get_operation(void)
             return op;
         }
         else
+
         {
             printf("Недопустимая операция. Используйте +, -, * или /. Попробуйте ещё раз.\n");
         }
@@ -114,6 +121,7 @@ char get_operation(void)
 int main(void)
 {
     int num1, num2;
+
     char operation;
     long long result;
 
